@@ -1,11 +1,20 @@
 //If user adds a note add it to local storage
- 
+  
 let addBtn = document.getElementById("addBtn");
 showNotes();
 
 addBtn.addEventListener("click", function (e) {
   let addTxt = document.getElementById("addTxt");
   let addTitle = document.getElementById("addTitle");
+
+if (addTxt.value.length < 2 || addTitle.value.length < 2) {
+  alert("You cannot add this Note!")
+  addTxt.value="";
+  addTitle.value="";
+
+} 
+else{
+ 
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
@@ -25,7 +34,8 @@ addBtn.addEventListener("click", function (e) {
   console.log(notesObj);
 
   showNotes();
-});
+}});
+
 
 function showNotes() {
   let notes = localStorage.getItem("notes");
@@ -89,3 +99,4 @@ search.addEventListener("input", function () {
     }
   });
 });
+
